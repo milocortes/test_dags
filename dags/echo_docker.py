@@ -22,7 +22,7 @@ with DAG(
         task_id="echo_docker",
         image="echo-docker:1.0.0",
         #cmds=["fetch-ratings"],
-        command=[
+        cmds=[
             "bash", 
             "test.sh"
         ],

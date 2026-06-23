@@ -17,7 +17,9 @@ spec:
       containers:
       - name: echo-docker
         image: echo-docker:1.0.0
-
+        #imagePullPolicy: Always
+        ports:
+        - containerPort: 8081
 ---
 apiVersion: v1
 kind: Service
@@ -25,4 +27,8 @@ metadata:
   name: echo-docker
 spec:
   selector:
-    app: echo-docker
+    app: echo-docker  
+  ports:
+    - protocol: TCP
+      port: 8081
+      targetPort: 8081
