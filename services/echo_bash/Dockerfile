@@ -1,5 +1,4 @@
-FROM alpine:3.14
-RUN apk add --no-cache bash
+FROM astral/uv:python3.12-bookworm-slim
 COPY test.sh ./
 RUN chmod +x ./test.sh
-ENTRYPOINT ["./test.sh"]
+#ENTRYPOINT ["bash", "./test.sh"]
