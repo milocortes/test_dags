@@ -17,18 +17,21 @@ spec:
       containers:
       - name: echo-docker
         image: echo-docker:1.0.0
+        # This overrides the Docker Entrypoint to make it do nothing indefinitely
+        command: ["sleep", "infinity"]
         #imagePullPolicy: Always
-        ports:
-        - containerPort: 8081
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: echo-docker
-spec:
-  selector:
-    app: echo-docker  
-  ports:
-    - protocol: TCP
-      port: 8081
-      targetPort: 8081
+#        ports:
+#        - containerPort: 8081
+
+#---
+#apiVersion: v1
+#kind: Service
+#metadata:
+#  name: echo-docker
+#spec:
+#  selector:
+#    app: echo-docker  
+#  ports:
+#    - protocol: TCP
+#      port: 8081
+#      targetPort: 8081

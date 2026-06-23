@@ -27,8 +27,6 @@ helm upgrade --install airflow apache-airflow/airflow \
 --debug --set apiServer.service.type=LoadBalancer -f /etc/helm/values/04-dags-in-git-values.yaml --set postgresql.image.repository=postgres --set postgresql.image.tag=16 
 ```
 
-
-
 ## 3. Verify the Running Pods
 
 Monitor the deployment until the webserver, scheduler, and PostgresSQL pods transition into a Running status
@@ -66,4 +64,33 @@ kubectl --namespace airflow  apply -f resources/echo_docker.yaml
 kubectl rollout status deploy/echo-docker
 kubectl get svc echo-docker
 
+```
+
+
+### Delete deployments
+
+Delete a specific deployment:
+```bash
+kubectl delete deployment <deployment-name>
+```
+
+Delete from a specific namespace:
+```bash
+kubectl delete deployment <deployment-name> -n <namespace-name>
+```
+
+Delete using a YAML configuration file:
+```bash
+kubectl delete -f <filename>.yaml
+```
+
+Delete all deployments in the current namespace:
+```bash
+kubectl delete deployments --all
+```
+
+
+### Delete a container image from your local minikube cluster
+```bash
+minikube image rm <image-name>
 ```
